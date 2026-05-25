@@ -474,7 +474,9 @@ MIT License — see LICENSE file for details.
 
 ## 👥 Team
 
-**Team QuantBits**
+- **Samrat Maurya** — AI Architect, Project Lead
+- **Gaurav Rajbhar** — Backend Developer
+- **Harsh Niket** — Frontend Developer
 
 ## 🔗 Links
 
