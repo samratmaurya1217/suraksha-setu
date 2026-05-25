@@ -1,0 +1,574 @@
+{
+  "_metadata": {
+    "version": "3.0.0",
+    "last_updated": "2026-02-16T00:00:00Z",
+    "description": "Deterministic Action Playbook — Suraksha Setu",
+    "disclaimer": "Actions are based on existing government guidelines and disaster management SOPs. AI does NOT invent actions — it selects the relevant guideline, localizes it, and simplifies it for the user.",
+    "sources": [
+      "NDMA Guidelines on Floods (ndma.gov.in)",
+      "NDMA Guidelines on Cyclones (ndma.gov.in)",
+      "NDMA Guidelines on Earthquakes (ndma.gov.in, 2007/2016)",
+      "NDMA Guidelines on Heatwaves (ndma.gov.in, Heat Action Plans)",
+      "NDMA Guidelines on Tsunamis (ndma.gov.in, 2010)",
+      "NDMA Guidelines on Landslides (ndma.gov.in, GSI)",
+      "NDMA Guidelines on Cold Waves (ndma.gov.in, IMD)",
+      "IMD Cyclone Advisories & Color-Coded Warnings (imd.gov.in)",
+      "IMD Heatwave Action Plans (imd.gov.in)",
+      "CPCB National Air Quality Index Guidelines (cpcb.nic.in)",
+      "ICAR District Agricultural Contingency Plans (icar.org.in)",
+      "ICAR-NICRA Climate Resilient Agriculture Advisories",
+      "MoHFW Public Health Advisory for Floods (mohfw.gov.in)",
+      "MoHFW Public Health Advisory for Heatwaves (mohfw.gov.in)",
+      "INCOIS Tsunami Early Warning System Advisories (incois.gov.in)",
+      "State Disaster Management Authority SOPs (SDMA)"
+    ],
+    "selection_logic": "risk_type + severity + user_role → action_set (deterministic, explainable, auditable)",
+    "ai_role": "AI selects the relevant guideline, localizes it to the user's PIN/terrain/population, and simplifies the language. AI does NOT generate or invent actions."
+  },
+  "rules": [
+    {
+      "risk_type": "flood",
+      "severity": "low",
+      "user_role": "citizen",
+      "source": "NDMA Flood Guidelines; MoHFW Public Health Advisory",
+      "actions": [
+        "Monitor weather updates from IMD and local authorities via radio, TV, or SACHET portal.",
+        "Identify your nearest flood shelter and plan a safe evacuation route in advance.",
+        "Keep an emergency kit ready: torch, radio, medicines, dry food, drinking water, and copies of important documents.",
+        "Clear blocked drains and gutters around your home to ensure proper water runoff.",
+        "Store important documents and valuables in waterproof bags on higher shelves."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "NDMA Flood Guidelines; CWC Advisory",
+      "actions": [
+        "Move valuables, important documents, and essential supplies to higher floors or elevated areas.",
+        "Avoid low-lying roads, underpasses, and waterlogged areas — do not drive through flowing water.",
+        "Keep emergency numbers accessible: NDMA (1078), local fire station, nearest hospital.",
+        "Fill clean containers with drinking water as supply lines may be disrupted.",
+        "Disconnect electrical appliances if water starts entering your home.",
+        "Follow evacuation advisories from District Disaster Management Authority (DDMA)."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Flood Guidelines; MoHFW Advisory; CWC Flood Bulletin",
+      "actions": [
+        "EVACUATE to designated flood shelters immediately if advised by DDMA authorities.",
+        "Do NOT attempt to cross flowing water on foot or in a vehicle — even 15cm of moving water can knock you down.",
+        "Turn off main power switch and gas valve before leaving your home (NDMA guideline).",
+        "Carry your emergency kit: torch, medicines, dry food, drinking water, identity documents.",
+        "Do NOT go near flooded electric poles, fallen cables, or submerged electrical equipment.",
+        "After flooding: drink only boiled or chlorinated water. Do NOT use floodwater for cooking, drinking, or washing (MoHFW).",
+        "Assist elderly, disabled, and vulnerable neighbors in evacuation if it is safe to do so.",
+        "Wait for official 'All Clear' from local authorities before returning home."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "critical",
+      "user_role": "citizen",
+      "source": "NDMA Flood Guidelines; SDRF Advisory; MoHFW",
+      "actions": [
+        "EVACUATE IMMEDIATELY to the nearest designated shelter or high ground — do NOT wait.",
+        "Call NDMA Helpline 1078 or State Disaster Helpline if you are trapped.",
+        "Do NOT attempt to cross flowing water under any circumstances.",
+        "If trapped, move to the highest floor or roof and signal for help using bright cloth or torch.",
+        "Turn off all utilities (electricity, gas) before evacuation if time permits.",
+        "Do NOT return to affected areas until District Collector or DDMA declares it safe.",
+        "After rescue: seek medical attention. Watch for symptoms of waterborne diseases (diarrhea, cholera, leptospirosis).",
+        "Report dead animals or contaminated water sources to the local municipal authority."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "low",
+      "user_role": "farmer",
+      "source": "ICAR District Agricultural Contingency Plans; ICAR-NICRA Advisory",
+      "actions": [
+        "Monitor IMD rainfall forecasts and Gramin Krishi Mausam Sewa (GKMS) advisories via Meghdoot App.",
+        "Ensure drainage channels around fields are clear and functional before the monsoon.",
+        "Avoid irrigation for 24–48 hours if heavy rainfall is predicted.",
+        "Cover stored grains and seeds with waterproof tarpaulins on raised platforms."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "medium",
+      "user_role": "farmer",
+      "source": "ICAR DACP; ICAR Flood Advisory; State Agricultural Department",
+      "actions": [
+        "Delay irrigation and postpone sowing until water recedes (ICAR advisory).",
+        "Move farm equipment, fertilizers, and pesticides to higher ground or protected storage.",
+        "Protect stored crops by elevating them above expected water level on bamboo or brick platforms.",
+        "If standing crop is at risk, consider early harvesting of mature produce to minimize losses.",
+        "Ensure livestock has access to elevated shelter and stored fodder for 3–5 days.",
+        "Contact the nearest Krishi Vigyan Kendra (KVK) for crop insurance guidance under PMFBY."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "high",
+      "user_role": "farmer",
+      "source": "ICAR DACP; NDMA Flood Guidelines; State Agriculture Advisory",
+      "actions": [
+        "Evacuate livestock to pre-identified elevated shelters. Carry 3–5 days of fodder and water.",
+        "Do NOT enter flooded fields — risk of drowning and contaminated water.",
+        "After floodwater recedes: assess crop damage and photograph all losses for insurance claims (PMFBY).",
+        "Plant alternate crops as recommended by KVK: hybrid maize, lentil, mustard, or short-duration vegetables.",
+        "Treat waterlogged soil with lime (as per ICAR recommendation) before replanting.",
+        "Consider waterlogging-tolerant rice varieties like Hangseswari or Saraswati for future seasons (ICAR-NICRA)."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "high",
+      "user_role": "student",
+      "source": "NDMA Flood Guidelines; NCERT Disaster Management Curriculum",
+      "actions": [
+        "Stay indoors and away from floodwater — it carries diseases and hidden dangers like open drains and sharp debris.",
+        "Keep school books, electronics, and important items in waterproof bags on high shelves.",
+        "Listen to parents and school authorities — follow their evacuation instructions.",
+        "Learn about your school's emergency evacuation plan and nearest safe assembly point.",
+        "Do NOT play in or near floodwater under any circumstances.",
+        "Help your family prepare an emergency kit with food, water, torch, and first-aid supplies."
+      ]
+    },
+    {
+      "risk_type": "flood",
+      "severity": "high",
+      "user_role": "scientist",
+      "source": "CWC Real-Time Data; NDMA Guidelines; IMD Hydromet Network",
+      "actions": [
+        "Access CWC real-time flood monitoring data at cwc.gov.in for river stage levels and discharge rates.",
+        "Review IMD's Quantitative Precipitation Forecast (QPF) for basin-level rainfall projections.",
+        "Cross-reference MOSDAC satellite imagery (INSAT-3D/3DR) for rainfall estimation and cloud movement.",
+        "Analyze historical flood data from CWC for the affected basin to assess recurrence interval.",
+        "Review NDMA flash flood risk maps and GSI landslide susceptibility maps for cascading hazards.",
+        "Coordinate with State Disaster Management Authority for ground-truth validation of remote sensing data."
+      ]
+    },
+    {
+      "risk_type": "cyclone",
+      "severity": "low",
+      "user_role": "citizen",
+      "source": "NDMA Cyclone Guidelines; IMD Cyclone Advisory",
+      "actions": [
+        "Monitor IMD cyclone bulletins and color-coded warnings regularly.",
+        "Prepare an emergency kit: fresh water (1 gallon/person/day for 3 days), non-perishable food, first-aid, torch, batteries.",
+        "Check your house for structural weaknesses — repair loose roofing, windows, and doors.",
+        "Identify nearest cyclone shelter and plan your evacuation route (contact DDMA for locations)."
+      ]
+    },
+    {
+      "risk_type": "cyclone",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "NDMA Cyclone Guidelines; IMD Weather Warning; SDMA Advisory",
+      "actions": [
+        "Secure all loose outdoor objects: flower pots, trash cans, sign boards, satellite dishes — they become lethal projectiles.",
+        "Board up windows or cover them with storm shutters. Tape large glass panes.",
+        "Charge all mobile devices and power banks to full capacity.",
+        "Stock up on essential medicines and 3-day supply of non-perishable food and clean water.",
+        "Help fishing communities secure boats and equipment in safe harbors (NDMA guideline).",
+        "Keep important documents in a waterproof bag ready for evacuation."
+      ]
+    },
+    {
+      "risk_type": "cyclone",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Cyclone Guidelines; IMD Warning; INCOIS Storm Surge Advisory",
+      "actions": [
+        "EVACUATE immediately if you are in a coastal or low-lying area as directed by DDMA.",
+        "Move to the nearest designated cyclone shelter — do NOT stay in kutcha (temporary) structures.",
+        "Stay indoors in a safe room, away from windows and glass doors.",
+        "Disconnect all electrical appliances to prevent damage from power surges.",
+        "Do NOT go outside during the 'eye' of the cyclone — winds resume suddenly from the opposite direction with greater force.",
+        "Do NOT touch fallen power lines or electrical wires.",
+        "Drink only boiled or chlorinated water to avoid contamination.",
+        "After cyclone: do NOT enter damaged buildings. Report broken utility lines to authorities."
+      ]
+    },
+    {
+      "risk_type": "cyclone",
+      "severity": "high",
+      "user_role": "farmer",
+      "source": "ICAR Advisory; NDMA Cyclone Guidelines; State Agricultural Department",
+      "actions": [
+        "Harvest mature crops immediately before landfall if time permits (ICAR advisory).",
+        "Secure farm equipment and livestock in reinforced shelters away from coastal zones.",
+        "After cyclone: assess crop and soil damage. Photograph all losses for PMFBY insurance claims.",
+        "Drain excess water from fields as soon as possible to prevent root rot.",
+        "Contact your nearest KVK for advice on replanting salt-tolerant varieties after storm surge.",
+        "Apply recommended fertilizers and soil amendments per ICAR post-cyclone recovery guidelines."
+      ]
+    },
+    {
+      "risk_type": "earthquake",
+      "severity": "low",
+      "user_role": "citizen",
+      "source": "NDMA Earthquake Guidelines (2007/2016); BIS IS 1893",
+      "actions": [
+        "Fasten heavy shelves and furniture securely to walls. Place heavy objects on lower shelves.",
+        "Store breakable items in low, closed cabinets with latches.",
+        "Repair defective electrical wiring and leaky gas connections immediately.",
+        "Develop a family reunification plan: decide where to meet if separated during an earthquake.",
+        "Prepare an emergency survival kit with torch, first-aid, water, dry food, whistle, and important documents.",
+        "Identify safe spots in each room: under sturdy tables, away from windows, mirrors, and heavy objects."
+      ]
+    },
+    {
+      "risk_type": "earthquake",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "NDMA Earthquake Guidelines; BIS Building Code IS 1893; SDMA Advisory",
+      "actions": [
+        "Follow DROP–COVER–HOLD ON: get under sturdy furniture, cover your head, and hold on until shaking stops (NDMA).",
+        "Stay away from windows, glass doors, mirrors, and anything that could fall or shatter.",
+        "Do NOT use elevators — always use stairs for evacuation.",
+        "If outdoors: move to an open area away from buildings, trees, electric poles, and flyovers.",
+        "If driving: pull over away from buildings, bridges, and overpasses. Stay inside the vehicle.",
+        "After shaking stops: check for gas leaks. Do NOT light matches or use open flames.",
+        "Anticipate aftershocks — stay alert and be prepared to take cover again."
+      ]
+    },
+    {
+      "risk_type": "earthquake",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Earthquake Guidelines; SDMA Advisory; BIS Standards",
+      "actions": [
+        "DROP–COVER–HOLD ON immediately. Do NOT run outside during shaking.",
+        "If trapped under debris: cover mouth with cloth, tap on pipes/walls to signal rescuers. Use whistle if available. Do NOT shout (conserve air).",
+        "Do NOT re-enter damaged buildings after shaking stops — aftershocks can cause collapse.",
+        "If you smell gas: turn off main valve, leave building immediately, call fire services from outside.",
+        "Keep streets clear for emergency vehicles (NDMA guideline).",
+        "Check yourself and others for injuries. Administer first aid. Do NOT move seriously injured unless in immediate danger.",
+        "Use official information only — do NOT spread or believe rumors.",
+        "Do NOT waste water — supply lines may be damaged."
+      ]
+    },
+    {
+      "risk_type": "earthquake",
+      "severity": "high",
+      "user_role": "student",
+      "source": "NDMA Earthquake Guidelines; NCERT Disaster Management Curriculum; CBSE Safety Manual",
+      "actions": [
+        "Follow your school's earthquake drill: DROP under your desk, COVER your head, HOLD ON.",
+        "Stay away from windows, lab equipment, bookshelves, and anything that could fall.",
+        "Do NOT run outside during shaking — wait for the teacher's instructions.",
+        "After shaking stops: evacuate the building in an orderly manner through stairs. Never use elevators.",
+        "Assemble at the designated earthquake assembly point.",
+        "If trapped: tap loudly on surface to signal rescuers. Do NOT panic."
+      ]
+    },
+    {
+      "risk_type": "heatwave",
+      "severity": "low",
+      "user_role": "citizen",
+      "source": "NDMA Heatwave Guidelines; IMD Heat Action Plan; MoHFW Advisory",
+      "actions": [
+        "Drink sufficient water frequently, even if you do not feel thirsty (NDMA guideline).",
+        "Use ORS, lassi, buttermilk, lemon water, or torani (rice water) to stay hydrated.",
+        "Eat seasonal fruits with high water content: watermelon, musk melon, oranges, cucumber.",
+        "Wear lightweight, light-colored, loose-fitting cotton clothes.",
+        "Stay informed: monitor IMD heat alerts and weather updates."
+      ]
+    },
+    {
+      "risk_type": "heatwave",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "NDMA Heatwave Guidelines; IMD Color-Coded Alert; State HAP",
+      "actions": [
+        "Avoid outdoor activities between 12 PM and 3 PM — the hottest part of the day.",
+        "Use goggles, umbrella/hat, and proper footwear when stepping out in the sun.",
+        "Use fans, damp clothing, and take frequent cold water baths to keep body temperature down.",
+        "Keep your home cool: use curtains/shutters, open windows at night for cooler air.",
+        "Do NOT consume alcohol, tea, coffee, or carbonated drinks — they cause dehydration (NDMA).",
+        "Never leave children or pets in a parked vehicle — temperatures rise dangerously inside.",
+        "Check on elderly neighbors living alone — they are at highest risk."
+      ]
+    },
+    {
+      "risk_type": "heatwave",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Heatwave Guidelines; IMD Severe Heatwave Warning; MoHFW",
+      "actions": [
+        "STAY INDOORS. Avoid all non-essential outdoor travel and physical exertion.",
+        "If outdoor work is unavoidable: take breaks every 20 minutes in shade, drink water continuously (NDMA).",
+        "Recognize heat stroke symptoms: high body temperature (>104°F), confusion, no sweating, rapid pulse — this is a MEDICAL EMERGENCY.",
+        "First aid for heat stroke: move person to shade, wipe body with wet cloth, pour normal temperature water on head, give ORS/lemon water, rush to nearest health center (MoHFW).",
+        "Outdoor workers: shift work to early morning or late evening. Extended breaks from noon to 4 PM (NDMA 2019 guidelines).",
+        "Do NOT eat high-protein or stale food during severe heat.",
+        "Ensure animals have shade and plenty of water."
+      ]
+    },
+    {
+      "risk_type": "heatwave",
+      "severity": "high",
+      "user_role": "farmer",
+      "source": "ICAR-NICRA Advisory; ICAR Heatwave Guidelines; KVK Advisory",
+      "actions": [
+        "Apply straw mulching in orchards to reduce soil temperature and conserve moisture (ICAR).",
+        "Cover fruit trees and nurseries with shade nets (50%) to prevent sun scalding.",
+        "Irrigate crops lightly and frequently during early morning or late evening — avoid midday irrigation.",
+        "For wheat (>37°C): spray 0.2% Muriate of Potash or 2% Potassium Nitrate to prevent desiccation (ICAR advisory).",
+        "For livestock: provide shade, bathe animals twice daily, feed green fodder and mineral mixtures to minimize milk yield loss.",
+        "Avoid spraying pesticides during peak heat — chemicals become more volatile and toxic.",
+        "Contact KVK for climate-resilient variety recommendations for next season."
+      ]
+    },
+    {
+      "risk_type": "tsunami",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "NDMA Tsunami Guidelines (2010); INCOIS ITEWS Advisory",
+      "actions": [
+        "If you feel a strong or prolonged earthquake near the coast, move inland to higher ground IMMEDIATELY — do NOT wait for official warning.",
+        "If you observe sudden recession or unusual rise in ocean water, move to higher ground immediately — these are natural tsunami warnings.",
+        "Tune in to radio/TV for INCOIS tsunami bulletins. Check SAMUDRA mobile app for alerts.",
+        "Move at least 500 meters inland or to elevation >10 meters above sea level.",
+        "Take emergency kit: torch, radio, medicines, documents, water."
+      ]
+    },
+    {
+      "risk_type": "tsunami",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Tsunami Guidelines (2010); INCOIS Warning Level; SDMA Advisory",
+      "actions": [
+        "EVACUATE coastal areas IMMEDIATELY. Move inland or to high ground (>10m elevation).",
+        "Do NOT go to the beach to watch waves — this is extremely dangerous.",
+        "Follow designated evacuation routes to tsunami shelters (DDMA designated locations).",
+        "Use telephones or cell phones ONLY for emergencies — conserve communication capacity (NDMA).",
+        "Do NOT return to coastal areas until DDMA/SDMA declares official 'All Clear'.",
+        "After tsunami: check for gas leaks and electrical shorts before re-entering buildings.",
+        "All food and water must be tested for contamination before use (NDMA guideline).",
+        "Stay away from debris in water — it can be lethal to boats and people."
+      ]
+    },
+    {
+      "risk_type": "landslide",
+      "severity": "low",
+      "user_role": "citizen",
+      "source": "NDMA Landslide Guidelines; GSI Vulnerability Maps; IMD Forecast",
+      "actions": [
+        "Learn warning signs: new cracks in walls/ground, tilting trees, sudden changes in stream water flow, cracking sounds.",
+        "Keep drains clear and do not dump waste on steep slopes — it destabilizes soil.",
+        "Grow deep-rooted trees and vegetation on slopes near your home (NDMA recommendation).",
+        "Store emergency supplies: food, water, flashlight, batteries, medicines, identity documents.",
+        "Stay informed: tune into IMD landslide forecasts during monsoon season."
+      ]
+    },
+    {
+      "risk_type": "landslide",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "NDMA Landslide Guidelines; GSI Advisory; SDMA Hill Area SOPs",
+      "actions": [
+        "If you notice cracks in ground, tilting structures, or unusual sounds during heavy rain, EVACUATE immediately.",
+        "Report any suspicious ground movements to the nearest government helpline or DDMA.",
+        "Do NOT stay in low-lying valleys or at the base of steep slopes during prolonged heavy rain.",
+        "Keep a disaster kit ready with essential documents in a waterproof bag.",
+        "Do NOT alter natural drainage paths or construct on slopes above 30° (NDMA 2019 recommendation)."
+      ]
+    },
+    {
+      "risk_type": "landslide",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Landslide Guidelines; GSI SOP; SDRF Advisory",
+      "actions": [
+        "EVACUATE immediately if you are in or near a landslide-prone area. Move away from the path of the slide.",
+        "Do NOT touch or walk over loose debris, exposed electric wires, or damaged poles.",
+        "Do NOT drink water from springs or wells in landslide-affected areas — it may be contaminated.",
+        "Check for injured or trapped persons ONLY if you can do so safely. Call NDMA Helpline 1078.",
+        "Stay away from the slide area until experts confirm it is safe — secondary slides are common.",
+        "Do NOT move seriously injured persons without first aid unless they are in immediate danger."
+      ]
+    },
+    {
+      "risk_type": "cold_wave",
+      "severity": "low",
+      "user_role": "citizen",
+      "source": "NDMA Cold Wave Guidelines; IMD Cold Wave Advisory",
+      "actions": [
+        "Wear multiple layers of loose-fitting, lightweight warm clothing. Cover head, neck, hands, and toes.",
+        "Drink hot fluids regularly (soup, warm water, ginger tea) to maintain body temperature.",
+        "Monitor IMD cold wave forecasts and color-coded weather warnings.",
+        "Check on elderly neighbors living alone — they are most vulnerable to hypothermia."
+      ]
+    },
+    {
+      "risk_type": "cold_wave",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Cold Wave Guidelines; IMD Severe Cold Wave Warning; MoHFW",
+      "actions": [
+        "STAY INDOORS. Minimize travel and exposure to cold winds.",
+        "Do NOT ignore shivering — it is the first sign of dangerous heat loss. Return indoors immediately.",
+        "Do NOT drink alcohol — it reduces body temperature and increases hypothermia risk (NDMA).",
+        "Avoid wearing tight clothing — it reduces blood circulation in extremities.",
+        "Do NOT massage frostbitten skin — it causes further tissue damage. Seek medical attention.",
+        "Have an emergency kit: flashlights, batteries, extra blankets, water, non-perishable food.",
+        "For outdoor workers: take warm breaks every 30 minutes. Carry thermos with hot liquids."
+      ]
+    },
+    {
+      "risk_type": "cold_wave",
+      "severity": "high",
+      "user_role": "farmer",
+      "source": "ICAR Advisory; IMD Cold Wave; State Agricultural Department",
+      "actions": [
+        "Protect crops with mulching or straw cover to insulate against frost damage.",
+        "Use sprinkler irrigation in orchards during frost nights — the water layer prevents freezing damage (ICAR).",
+        "Provide adequate shelter and extra feed for livestock. Ensure warm bedding in animal shelters.",
+        "Cover nurseries and seedbeds with plastic sheets or jute to protect tender plants.",
+        "Monitor GKMS advisories on Meghdoot App for localized frost and cold wave predictions."
+      ]
+    },
+    {
+      "risk_type": "aqi",
+      "severity": "low",
+      "user_role": "citizen",
+      "source": "CPCB National Air Quality Index (NAQI) Guidelines; MoEFCC Advisory",
+      "actions": [
+        "AQI 101–200 (Moderate): Minor discomfort possible for unusually sensitive people.",
+        "Reduce prolonged outdoor exertion if you experience breathing discomfort.",
+        "Keep windows closed during peak traffic hours and in areas near industrial zones.",
+        "Monitor real-time AQI on CPCB SAMEER App or cpcb.nic.in."
+      ]
+    },
+    {
+      "risk_type": "aqi",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "CPCB NAQI Guidelines; SAFAR Advisory; MoHFW",
+      "actions": [
+        "AQI 201–300 (Poor): Breathing discomfort likely for people with lung/heart disease.",
+        "Wear an N95/P100 mask when stepping outdoors (regular cloth masks do NOT filter PM2.5).",
+        "Avoid outdoor jogging, cycling, and strenuous exercise. Shift to indoor activities.",
+        "Use air purifiers with HEPA filters indoors if available.",
+        "Keep asthma medications and inhalers accessible. Consult doctor if symptoms worsen."
+      ]
+    },
+    {
+      "risk_type": "aqi",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "CPCB NAQI Guidelines; GRAP (Delhi NCR); SAFAR Advisory; MoHFW",
+      "actions": [
+        "AQI 301–400 (Very Poor): Breathing discomfort for most people on prolonged exposure.",
+        "Wear N95 mask if heading outdoors — mandatory for outdoor workers.",
+        "Avoid ALL strenuous outdoor activities. Close windows and doors.",
+        "Use air purifiers and wet-mop floors to reduce indoor particulate matter.",
+        "Keep children, elderly, and persons with respiratory conditions strictly indoors.",
+        "If AQI exceeds 400 (Severe): call NDMA Helpline 1078. Follow GRAP emergency actions if in Delhi-NCR."
+      ]
+    },
+    {
+      "risk_type": "aqi",
+      "severity": "high",
+      "user_role": "student",
+      "source": "CPCB NAQI; Delhi GRAP Guidelines; School Safety Advisory",
+      "actions": [
+        "Stay indoors during school recess if AQI exceeds 300. Avoid outdoor sports and PT class.",
+        "Wear N95 mask when traveling to and from school.",
+        "If you experience difficulty breathing, wheezing, or burning eyes — report to teacher immediately.",
+        "Keep windows shut in classrooms. Request use of air purifiers if available.",
+        "Drink warm water. Jaggery and turmeric milk can help reduce throat irritation."
+      ]
+    },
+    {
+      "risk_type": "drought",
+      "severity": "medium",
+      "user_role": "farmer",
+      "source": "ICAR DACP; ICAR-NICRA Drought Advisory; State Agriculture Department",
+      "actions": [
+        "Use harvested rainwater from farm ponds for protective irrigation (ICAR recommendation).",
+        "Apply mulching with crop residues to conserve soil moisture.",
+        "Switch to short-duration and drought-tolerant crop varieties recommended by KVK.",
+        "Apply foliar spray of 2% KCl at flowering stage for rapeseed; KNO3 for cotton and soybean (ICAR).",
+        "Practice in-situ moisture conservation techniques: contour bunding, trenching, and ridge-furrow.",
+        "Contact KVK for drought contingency plan and crop insurance (PMFBY) guidance."
+      ]
+    },
+    {
+      "risk_type": "drought",
+      "severity": "high",
+      "user_role": "farmer",
+      "source": "ICAR DACP; ICAR-CRIDA Advisory; State Agricultural Contingency Plan",
+      "actions": [
+        "Prioritize life-saving irrigation for standing crops. Use drip irrigation to maximize efficiency.",
+        "Harvest whatever produce is salvageable — do not wait for full maturity in severe drought.",
+        "Consider fodder crops (sorghum, bajra) for livestock if main crop is lost.",
+        "Apply for crop loss compensation under PMFBY — document all damage with photographs.",
+        "Reduce livestock herd to manageable numbers. Prioritize milch animals and breeding stock.",
+        "Contact Block Development Officer (BDO) for access to fodder banks and cattle camps."
+      ]
+    },
+    {
+      "risk_type": "drought",
+      "severity": "medium",
+      "user_role": "citizen",
+      "source": "NDMA Drought Guidelines; Central Ground Water Board Advisory",
+      "actions": [
+        "Conserve water: fix leaking taps, use bucket instead of hose, reuse kitchen water for plants.",
+        "Harvest rainwater using rooftop collection systems if possible.",
+        "Follow local water rationing schedules issued by the municipal corporation.",
+        "Store drinking water in clean, covered containers — boil water if quality is suspect.",
+        "Report suspected water contamination to local authorities immediately."
+      ]
+    },
+    {
+      "risk_type": "industrial",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Chemical Disaster Guidelines; Factory Act 1948; PESO Advisory",
+      "actions": [
+        "Move UPWIND from the chemical release site — never downwind.",
+        "Cover nose and mouth with a wet cloth as an emergency measure against toxic fumes.",
+        "Do NOT touch spilled chemicals or contaminated materials.",
+        "If chemicals have contacted your skin: remove contaminated clothing, wash skin with clean water for 15 minutes.",
+        "Call NDMA Helpline 1078 and local fire services. Report the chemical identity if known.",
+        "Stay at least 500 meters from the incident site. Follow local authority's evacuation orders.",
+        "After incident: do NOT consume food, water, or crops from contaminated areas until cleared by authorities."
+      ]
+    },
+    {
+      "risk_type": "thunderstorm",
+      "severity": "high",
+      "user_role": "citizen",
+      "source": "NDMA Lightning/Thunderstorm Advisory; IMD Nowcast Warning",
+      "actions": [
+        "Move indoors or into a hard-topped vehicle immediately. Avoid open fields, hilltops, and isolated trees.",
+        "Disconnect electrical appliances and avoid using corded phones during lightning.",
+        "Stay away from metallic fences, poles, and water bodies.",
+        "If no shelter: crouch low on balls of your feet, keep feet together, cover ears. Do NOT lie flat.",
+        "Wait 30 minutes after the last thunder before going outside (30-30 rule).",
+        "Farmers: do NOT stand near tractors, metal implements, or under isolated trees during lightning."
+      ]
+    },
+    {
+      "risk_type": "thunderstorm",
+      "severity": "high",
+      "user_role": "farmer",
+      "source": "NDMA Lightning Advisory; ICAR; IMD Nowcast",
+      "actions": [
+        "Stop all field work immediately when lightning is nearby. Move to enclosed shelter.",
+        "Do NOT stand under isolated trees or near metal equipment (tractors, ploughs, fencing).",
+        "Secure livestock in covered shelters — do NOT leave them in open fields.",
+        "After storm: check for downed power lines and report to electricity board.",
+        "Inspect crops for hail damage. Photograph damage for insurance documentation under PMFBY."
+      ]
+    }
+  ]
+}
