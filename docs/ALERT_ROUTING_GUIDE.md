@@ -89,7 +89,7 @@ If you're nearby and can help safely, please respond immediately.
 
 ```bash
 # Telegram Bot (required)
-TELEGRAM_BOT_TOKEN=8127774414:AAH8XLOZiW0sbnQjaqj3FZ6s235VAtN4dag
+TELEGRAM_BOT_TOKEN=<YOUR_TELEGRAM_BOT_TOKEN>
 TELEGRAM_BOT_USERNAME=settu9856bot
 
 # SMS Service (optional, for SMS alerts)
