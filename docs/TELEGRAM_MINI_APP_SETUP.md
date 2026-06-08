@@ -15,7 +15,7 @@ Suraksha Setu now supports **Telegram Mini Apps** for automatic Chat ID registra
 ## 📋 Prerequisites
 
 1. **Telegram Bot Token** (already created: from @BotFather)
-   - Your token: `8127774414:AAH8XLOZiW0sbnQjaqj3FZ6s235VAtN4dag`
+   - Your token: `<YOUR_TELEGRAM_BOT_TOKEN>`
    - Your bot: `@settu9856bot`
 
 2. **Suraksha Setu Backend** running and deployed
@@ -320,7 +320,7 @@ Add to `backend/.env`:
 
 ```bash
 # Telegram Bot (already set)
-TELEGRAM_BOT_TOKEN=8127774414:AAH8XLOZiW0sbnQjaqj3FZ6s235VAtN4dag
+TELEGRAM_BOT_TOKEN=<YOUR_TELEGRAM_BOT_TOKEN>
 TELEGRAM_BOT_USERNAME=settu9856bot
 
 # Alert radius for notifications

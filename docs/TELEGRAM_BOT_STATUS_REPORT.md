@@ -26,7 +26,7 @@ The Telegram Bot integration for Suraksha Setu is fully functional and ready for
 
 ## 📱 BOT INFORMATION
 
-- **Bot ID**: 8127774414
+- **Bot ID**: <YOUR_BOT_ID>
 - **Bot Name**: setu
 - **Bot Username**: @settu9856bot
 - **Bot Status**: ✅ Active and Validated
@@ -181,7 +181,7 @@ The bot token is securely stored and configured. In production:
 
 ### Environment Variables Required
 ```bash
-TELEGRAM_BOT_TOKEN="8127774414:AAH8XLOZiW0sbnQjaqj3FZ6s235VAtN4dag"
+TELEGRAM_BOT_TOKEN="<YOUR_TELEGRAM_BOT_TOKEN>"
 TELEGRAM_BOT_USERNAME="settu9856bot"
 TELEGRAM_WEBHOOK_SECRET=""    # Optional, for extra security
 BACKEND_URL="http://localhost:8000"
